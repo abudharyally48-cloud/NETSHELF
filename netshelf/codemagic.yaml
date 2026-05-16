@@ -1,13 +1,20 @@
 workflows:
   android-workflow:
-    name: Android Build
+    name: NetShelf Android Build
     environment:
       flutter: 3.24.0
       java: 17
     scripts:
+      - name: Get Flutter
+        script: |
+          flutter --version
       - name: Get dependencies
-        script: flutter pub get
+        script: |
+          cd netshelf
+          flutter pub get
       - name: Build APK
-        script: flutter build apk --release
+        script: |
+          cd netshelf
+          flutter build apk --release
     artifacts:
-      - build/app/outputs/flutter-apk/app-release.apk
+      - netshelf/build/app/outputs/flutter-apk/app-release.apk
